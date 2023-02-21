@@ -1,0 +1,65 @@
+import React from "react";
+
+const Logo = () => {
+  return (
+    <div className="flex gap-1 items-center z-50">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 44 44"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g filter="url(#filter0_d_3_19)">
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M34.3333 5.90753L20.0814 18.25H38.9983C38.8645 28.0759 30.8577 36 21 36C11.0588 36 3 27.9411 3 18C3 8.0589 11.0588 0 21 0C26.2863 0 31.0402 2.27875 34.3333 5.90753Z"
+            fill="#474AEE"
+          />
+        </g>
+        <defs>
+          <filter
+            id="filter0_d_3_19"
+            x="0"
+            y="0"
+            width="43.9983"
+            height="44"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
+            <feOffset dx="1" dy="4" />
+            <feGaussianBlur stdDeviation="2" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0.278431 0 0 0 0 0.290196 0 0 0 0 0.933333 0 0 0 0.2 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow_3_19"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow_3_19"
+              result="shape"
+            />
+          </filter>
+        </defs>
+      </svg>
+
+      <h2 className="text-base font-extrabold mb-1">REduce</h2>
+    </div>
+  );
+};
+
+export default Logo;
