@@ -5,7 +5,7 @@
 
 @layer base {
   #__next {
-    @apply w-full h-full p-3 bg-[#D5D0FF];
+    @apply w-full h-screen p-3 bg-[#D5D0FF];
   }
 
   html {
@@ -21,7 +21,7 @@
     @apply font-medium text-[20px];
   }
   body {
-    @apply ios h-screen font-normal text-[16px]  box-border;
+    @apply h-screen font-normal text-[16px]  box-border;
   }
   button {
     @apply font-medium text-[16px];
@@ -36,7 +36,7 @@
 }
 
 /* dynamic vieport for IOS */
-#__next, .ios {
+#__next,body, .ios {
   height: 100dvh;
 }
 
