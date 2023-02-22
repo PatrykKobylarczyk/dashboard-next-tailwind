@@ -5,7 +5,7 @@
 
 @layer base {
   #__next {
-    @apply w-full h-[100dvh] p-3 bg-[#D5D0FF];
+    @apply w-full h-[100dvh] p-3 bg-[#D5D0FF] overflow-y-hidden;
   }
 
   html {
