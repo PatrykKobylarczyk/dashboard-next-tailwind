@@ -21,7 +21,7 @@
     @apply font-medium text-[20px];
   }
   body {
-    @apply h-screen font-normal text-[16px]  box-border;
+    @apply ios h-screen font-normal text-[16px]  box-border;
   }
   button {
     @apply font-medium text-[16px];
