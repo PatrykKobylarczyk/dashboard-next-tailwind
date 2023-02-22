@@ -5,7 +5,7 @@ import { TfiStatsUp } from "react-icons/tfi";
 import { RiMessage2Line } from "react-icons/ri";
 import { MdPersonOutline } from "react-icons/md";
 import { FiPieChart } from "react-icons/fi";
-import { RxCalendar } from "react-icons/Rx";
+import { RxCalendar } from "react-icons/rx";
 import { TbChecklist } from "react-icons/tb";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
