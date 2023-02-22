@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { BsPlus, BsBox, BsWallet2 } from "react-icons/bs";
-import { TfiStatsUp } from "react-icons/Tfi";
+import { TfiStatsUp } from "react-icons/tfi";
 import { RiMessage2Line } from "react-icons/ri";
 import { MdPersonOutline } from "react-icons/md";
 import { FiPieChart } from "react-icons/fi";
