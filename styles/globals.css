@@ -1,38 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-
-  #__next{
-    @apply w-full h-full p-3 bg-Primary/20
+  #__next {
+    @apply w-full h-full p-3 bg-[#D5D0FF];
   }
 
   html {
-    @apply font-Inter
+    @apply font-Inter;
   }
-  h1{
-    @apply font-bold text-[32px]
+  h1 {
+    @apply font-bold text-[32px];
   }
-  h2{
-    @apply font-medium text-[24px]
+  h2 {
+    @apply font-medium text-[24px];
   }
-  h3{
-    @apply font-medium text-[20px]
+  h3 {
+    @apply font-medium text-[20px];
   }
-  body{
-    @apply h-screen font-normal text-[16px]  box-border 
+  body {
+    @apply h-screen font-normal text-[16px]  box-border;
   }
-  button{
-    @apply font-medium text-[16px]
+  button {
+    @apply font-medium text-[16px];
   }
-  main{
-    @apply pl-64 pt-16 w-full h-full  rounded-2xl 
+  main {
+    @apply sm:pl-64 pt-16 w-full h-full  rounded-2xl;
   }
-  
 }
 
-.page{
-  @apply rounded-br-2xl bg-slate-100 w-full h-full
+.page {
+  @apply rounded-b-2xl sm:rounded-bl-none bg-slate-100 w-full h-full;
 }
+
+/* dynamic vieport for IOS */
+#__next {
+  height: 100dvh;
+}
+
+/* scrollback styling */
+.page::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+.page::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.page::-webkit-scrollbar-thumb {
+  background-color: #c3beff;
+  border-radius: 3px;
+}
+
+
