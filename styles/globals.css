@@ -36,7 +36,7 @@
 }
 
 /* dynamic vieport for IOS */
-#__next {
+#__next, .ios {
   height: 100dvh;
 }
 
