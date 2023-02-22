@@ -77,6 +77,14 @@ const stores = [
   },
 ];
 
+interface StatisticCard {
+    id: number;
+    title: string;
+    percentage: number;
+    amount: number;
+    link: string;
+    icon: JSX.Element;
+  }
 
 
 export default function Home() {
