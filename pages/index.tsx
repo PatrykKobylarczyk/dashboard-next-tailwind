@@ -53,7 +53,7 @@ const stores = [
     progress: 71.3,
     deadline: "31/04/2023",
     visited: 1289,
-    status: "not enough",
+    status: "pending",
   },
   {
     id: "s2",
@@ -73,7 +73,7 @@ const stores = [
     progress: 84,
     deadline: "19/06/2023",
     visited: 1589,
-    status: "in progress",
+    status: "refunded",
   },
 ];
 

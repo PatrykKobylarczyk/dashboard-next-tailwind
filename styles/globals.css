@@ -50,4 +50,16 @@
   border-radius: 3px;
 }
 
-
+/* active link */
+.activeMobile, .activeDesktop{
+  width: auto;
+  border-radius: .5rem;
+}
+.activeMobile{
+  border-radius: .5rem;
+  border: 1px solid white;
+}
+.activeDesktop{
+  background-color: #7465ff;
+  color: white;
+}
