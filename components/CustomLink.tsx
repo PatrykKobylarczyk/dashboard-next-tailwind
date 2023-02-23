@@ -6,8 +6,8 @@ const CustomLink = ({link, isAboveSmallScreens, setIsOpen}:any) => {
     const router = useRouter();
 
   return (
-    <div
-          className={`flex items-center p-2 sm:p-3 gap-2  text-white sm:text-black ${
+    <li
+          className={`flex items-center p-2 sm:p-3 gap-2 ${
             router.pathname == link.path
               ? isAboveSmallScreens
                 ? "activeDesktop "
@@ -19,7 +19,7 @@ const CustomLink = ({link, isAboveSmallScreens, setIsOpen}:any) => {
           <Link href={link.path} className='w-full h-full' onClick={() => setIsOpen(false)}>
             {link.name}
           </Link>
-        </div>
+        </li>
   )
 }
 

@@ -63,3 +63,7 @@
   background-color: #7465ff;
   color: white;
 }
+
+.tableRow {
+  @apply flex flex-wrap items-center font-medium bg-red-500;
+}
