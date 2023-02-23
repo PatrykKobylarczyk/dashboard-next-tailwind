@@ -47,9 +47,9 @@ const dashboardStatistic = [
 const stores = [
   {
     id: "s1",
-    name: "Galeria Bałtycka",
+    location: "Galeria Bałtycka",
     director: "Pierce Brosnan",
-    image: "",
+    image: "https://i.pravatar.cc/150?img=3",
     progress: 71.3,
     deadline: "31/04/2023",
     visited: 1289,
@@ -57,9 +57,9 @@ const stores = [
   },
   {
     id: "s2",
-    name: "Forum",
+    location: "Forum",
     director: "Albercik Dev",
-    image: "",
+    image: "https://i.pravatar.cc/150?img=7",
     progress: 100,
     deadline: "31/02/2023",
     visited: 1201,
@@ -67,9 +67,9 @@ const stores = [
   },
   {
     id: "s3",
-    name: "Metropolia",
+    location: "Metropolia",
     director: "Król Karol III",
-    image: "",
+    image: "https://i.pravatar.cc/150?img=2",
     progress: 84,
     deadline: "19/06/2023",
     visited: 1589,
@@ -101,12 +101,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageContent>
-        <div className="w-full h-full flex flex-col  gap-3">
+        <div className="w-full h-full flex flex-col  gap-4">
           <h2 className="font-bold text-base mt-1 ">Dashboard</h2>
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-3 mt-2">
+          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-4 mt-2">
             {statistics}
           </div>
-          <div className="w-full flex flex-col md:flex-row gap-3 ">
+          <div className="w-full flex flex-col md:flex-row gap-4 ">
             <div className="w-full md:w-3/5 h-72 rounded-xl bg-white grid place-items-center">
               wykres
             </div>
@@ -114,7 +114,7 @@ export default function Home() {
               mapka
             </div>
           </div>
-          <div className="w-full  bg-white rounded-xl p-5">
+          <div className="w-full  bg-white rounded-xl">
             <OrdersTable stores={stores} />
           </div>
         </div>

@@ -64,6 +64,10 @@
   color: white;
 }
 
+/* table styling */
+.categoryTable{
+  @apply w-full h-full bg-Primary text-white text-[8px] text-center uppercase p-5 font-bold
+}
 .tableRow {
-  @apply flex flex-wrap items-center font-medium bg-red-500;
+  @apply w-full h-full flex items-center gap-2 justify-center text-gray-500 first:text-Primary text-[9px] p-4 font-bold
 }

@@ -1,22 +1,40 @@
 import React from "react";
+import TableRow from "./TableRow";
 
+//HOOKS
+import useMediaQuery from "../hooks/useMediaQuery";
 
-const OrdersTable = ({stores}:any) => {
+interface Orders {
+  id: string;
+  location: string;
+  director: string;
+  image: HTMLElement;
+  progress: number;
+  deadline: Date;
+  visited: number;
+  status: string;
+}
 
-    console.log(stores)
+const OrdersTable = ({ stores }: any) => {
+  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+
+  const data = stores.map((item: Orders) => (
+    <TableRow key={item.id} item={item} />
+  ));
 
   return (
     <table className="w-full">
-      <tbody className="w-full">
+      <tbody className="w-full p-5 ">
         <tr className="w-full flex justify-between">
-            <td>coś</td>
-            <td>coś</td>
-            <td>coś</td>
-            <td>coś</td>
-            <td>coś</td>
-            <td>coś</td>
-            <td className="bg-red-500">coś</td>
+          <td className="categoryTable rounded-tl-2xl">location</td>
+          <td className="categoryTable">director</td>
+          {isAboveMediumScreens && <td className="categoryTable">progress</td>}
+          {isAboveSmallScreens && <td className="categoryTable">deadline</td>}
+          {isAboveMediumScreens && <td className="categoryTable">visited</td>}
+          <td className="categoryTable rounded-tr-2xl">status</td>
         </tr>
+        {data}
       </tbody>
     </table>
   );
