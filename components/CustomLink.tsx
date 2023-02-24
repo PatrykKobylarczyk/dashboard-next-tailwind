@@ -7,7 +7,7 @@ const CustomLink = ({link, isAboveSmallScreens, setIsOpen}:any) => {
 
   return (
     <li
-          className={`flex items-center p-2 sm:p-3 gap-2 ${
+          className={`flex items-center p-2 sm:p-3 gap-2 hover:bg-Primary/70 hover:text-white rounded-lg transition duration-200 ${
             router.pathname == link.path
               ? isAboveSmallScreens
                 ? "activeDesktop "

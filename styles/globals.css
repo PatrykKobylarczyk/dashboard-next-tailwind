@@ -5,7 +5,7 @@
 
 @layer base {
   #__next {
-    @apply w-full h-[100dvh] p-3 bg-[#D5D0FF] overflow-y-hidden;
+    @apply w-full h-[100dvh] p-3 bg-[#D5D0FF] overflow-hidden;
   }
 
   html {
@@ -21,7 +21,7 @@
     @apply font-medium text-[20px];
   }
   body {
-    @apply h-[100dvh] font-normal text-[16px]  box-border overflow-y-hidden;
+    @apply h-[100dvh] font-normal text-[16px]  box-border overflow-hidden;
   }
   button {
     @apply font-medium text-[16px];
@@ -32,7 +32,7 @@
 }
 
 .page {
-  @apply rounded-b-2xl sm:rounded-bl-none bg-slate-100 w-full h-full;
+  @apply w-full h-full rounded-b-2xl sm:rounded-bl-none bg-slate-100 ;
 }
 
 
@@ -71,3 +71,4 @@
 .tableRow {
   @apply w-full h-full flex items-center gap-2 justify-center text-gray-500 first:text-Primary text-[9px] p-4 font-bold
 }
+

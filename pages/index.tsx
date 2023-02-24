@@ -8,37 +8,46 @@ import {
 import { BsWallet2 } from "react-icons/bs";
 import DashboardStatisticCard from "@/components/DashboardStatisticCard";
 import OrdersTable from "@/components/OrdersTable";
+import BasicCard from "@/components/BasicCard";
 
 const dashboardStatistic = [
   {
     id: 1,
-    title: "total earnings",
-    percentage: 16.45,
-    amount: 589.89,
+    title: "budget",
+    percentage: 12,
+    amount: 24,
+    thousands: true,
+    unit: "$",
     link: "More details",
     icon: <MdAttachMoney />,
   },
   {
     id: 2,
-    title: "orders",
+    title: "total customers",
     percentage: -3.75,
-    amount: 36,
+    amount: 1.6,
+    thousands: true,
+    unit: "",
     link: "See all orders",
     icon: <MdOutlineShoppingBag />,
   },
   {
     id: 3,
-    title: "customers",
-    percentage: 340,
-    amount: 123.4,
+    title: "task progress",
+    percentage: 0,
+    amount: 75.5,
+    thousands: false,
+    unit: "%",
     link: "See details",
     icon: <MdPersonOutline />,
   },
   {
     id: 4,
-    title: "balance",
-    percentage: 0.0,
-    amount: 245.78,
+    title: "total profit",
+    percentage: 0,
+    amount: 15,
+    thousands: true,
+    unit: "$",
     link: "Withdraw money",
     icon: <BsWallet2 />,
   },
@@ -78,14 +87,15 @@ const stores = [
 ];
 
 interface StatisticCard {
-    id: number;
-    title: string;
-    percentage: number;
-    amount: number;
-    link: string;
-    icon: JSX.Element;
-  }
-
+  id: number;
+  title: string;
+  percentage: number;
+  amount: number;
+  thousands: boolean;
+  unit: string;
+  link: string;
+  icon: JSX.Element;
+}
 
 export default function Home() {
   const statistics = dashboardStatistic.map((item: StatisticCard) => {
@@ -107,15 +117,22 @@ export default function Home() {
             {statistics}
           </div>
           <div className="w-full flex flex-col md:flex-row gap-4 ">
-            <div className="w-full md:w-3/5 h-72 rounded-xl bg-white grid place-items-center">
-              wykres
+            <div className="w-full md:w-3/5 md:max-w-3/5">
+              <BasicCard>wykres</BasicCard>
             </div>
-            <div className="w-full md:w-2/5 h-72 rounded-xl bg-white grid place-items-center">
-              mapka
+            <div className="w-full md:w-2/5 md:max-w-2/5">
+              <BasicCard>
+                <p className="max-w-full">
+                  asdasdasdasdasdasdaasdasdasdasdasdasdaasdasdasdasdasdasdaasdasdasdasdasdasdaasdasdasdasdasdasda
+                </p>
+              </BasicCard>
             </div>
           </div>
-          <div className="w-full  bg-white rounded-xl">
-            <OrdersTable stores={stores} />
+          <div className="w-full h-full flex flex-col gap-4 mt-5">
+            <h2 className="font-bold text-base mt-1 ">Last Orders</h2>
+            <BasicCard resetPadding>
+              <OrdersTable stores={stores} />
+            </BasicCard>
           </div>
         </div>
       </PageContent>

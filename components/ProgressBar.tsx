@@ -1,13 +1,20 @@
 import React from "react";
 
 const ProgressBar = ({ progress }: any) => {
-
-  const fillProgressBar = Math.round(progress * 0.4);
+  const progressBar = `w-[${Math.round(progress * 0.4)}px]`;
 
   return (
-    <span
-      className={`relative h-1 w-[40px] bg-gray-300 rounded-sm before:absolute before:w-[${fillProgressBar}px] before:h-1 before:bg-Primary`}
-    ></span>
+    <div className={`relative h-1 w-[40px] bg-gray-300 rounded-sm`}>
+      <div
+        style={{
+          position: "absolute",
+          height: "4px",
+          background: "#7465ff",
+          borderRadius: "2px",
+          width: `${Math.round(progress * 0.4)}px`,
+        }}
+      ></div>
+    </div>
   );
 };
 
