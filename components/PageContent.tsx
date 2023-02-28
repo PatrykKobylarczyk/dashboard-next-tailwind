@@ -3,7 +3,7 @@ import React from "react";
 
 const PageContent = ({ children }: any) => {
   return (
-    <div className="page w-full h-full bg-orange-500! grid place-items-center p-5 overflow-auto">
+    <div className="page w-full h-full bg-orange-500! grid place-items-center p-5 md:p-16 overflow-auto">
       {children}
     </div>
   );

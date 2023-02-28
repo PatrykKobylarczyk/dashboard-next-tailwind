@@ -1,10 +1,10 @@
 import PageContent from '@/components/PageContent'
 import React from 'react'
 
-const Calendar = () => {
+const Companies = () => {
   return (
     <PageContent>content calendar</PageContent>
   )
 }
 
-export default Calendar
+export default Companies

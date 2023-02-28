@@ -1,5 +1,5 @@
 import React from "react";
-import TableRow from "./TableRow";
+import LastOrdersTableRow from "./LastOrdersTableRow";
 
 //HOOKS
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -20,7 +20,7 @@ const OrdersTable = ({ stores }: any) => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
 
   const data = stores.map((item: Orders) => (
-    <TableRow key={item.id} item={item} />
+    <LastOrdersTableRow key={item.id} item={item} />
   ));
 
   return (
