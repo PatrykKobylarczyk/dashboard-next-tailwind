@@ -11,8 +11,6 @@ import OrdersTable from "@/components/OrdersTable";
 import BasicCard from "@/components/BasicCard";
 import ChartBar from "@/components/ChartBar";
 import DoughnutChart from "@/components/DoughnutChart";
-;
-
 const dashboardStatistic = [
   {
     id: 1,
@@ -114,8 +112,10 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageContent>
-        <div className="w-full h-full flex flex-col gap-4">
-          <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">Dashboard</h2>
+        <div className="w-full h-full flex flex-col gap-4 ">
+          <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">
+            Dashboard
+          </h2>
           <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-4 mt-2">
             {statistics}
           </div>
@@ -129,14 +129,16 @@ const Home = () => {
             </div>
             <div className="w-full md:w-2/5 md:max-w-2/5">
               <BasicCard>
-              <div className="h-80 w-full">
-                  <DoughnutChart/>
+                <div className="h-80 w-full">
+                  <DoughnutChart />
                 </div>
               </BasicCard>
             </div>
           </div>
           <div className="w-full h-full flex flex-col gap-4 mt-5">
-            <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">Last Orders</h2>
+            <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">
+              Last Orders
+            </h2>
             <BasicCard resetPadding>
               <OrdersTable stores={stores} />
             </BasicCard>

@@ -24,19 +24,23 @@ const OrdersTable = ({ stores }: any) => {
   ));
 
   return (
-    <table className="w-full">
-      <tbody className="w-full p-5 ">
-        <tr className="w-full flex justify-between">
-          <td className="categoryTable rounded-tl-2xl">location</td>
-          <td className="categoryTable">director</td>
-          {isAboveMediumScreens && <td className="categoryTable">progress</td>}
-          {isAboveSmallScreens && <td className="categoryTable">deadline</td>}
-          {isAboveMediumScreens && <td className="categoryTable">visited</td>}
-          <td className="categoryTable rounded-tr-2xl">status</td>
-        </tr>
-        {data}
-      </tbody>
-    </table>
+    <div className="overflow-x-auto">
+      <table className="w-full">
+        <tbody className="w-full p-5 ">
+          <tr className="w-full flex justify-between">
+            <td className="categoryTable rounded-tl-2xl">location</td>
+            <td className="categoryTable">director</td>
+            {isAboveMediumScreens && (
+              <td className="categoryTable">progress</td>
+            )}
+            {isAboveSmallScreens && <td className="categoryTable">deadline</td>}
+            {isAboveMediumScreens && <td className="categoryTable">visited</td>}
+            <td className="categoryTable rounded-tr-2xl">status</td>
+          </tr>
+          {data}
+        </tbody>
+      </table>
+    </div>
   );
 };
 
