@@ -27,7 +27,7 @@
     @apply font-medium text-[16px] flex items-center p-2 sm:p-3 gap-2 hover:bg-Primary/70 hover:text-white rounded-lg sm:transition sm:duration-300 cursor-pointer;
   }
   main {
-    @apply sm:pl-64 pt-16 w-full h-full  rounded-2xl;
+    @apply w-full h-full  rounded-2xl;
   }
 }
 

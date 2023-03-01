@@ -27,10 +27,10 @@ const DashboardStatisticCard = ({ item }: any) => {
           {item.thousands && "k"}
         </p>
         <div className="w-full flex justify-between items-end">
-          <button type="button" className="text-[9px] text-Primary">
+          <button type="button" className="text-[9px] text-Primary p-0 hover:bg-transparent hover:translate-x-2 hover:text-[#F79009] transition duration-300">
             {item.link}
           </button>
-          <span className="w-7 h-7 bg-Primary/20 rounded-md grid place-items-center text-Primary text-xs">
+          <span className="w-7 h-7 bg-Primary/20 rounded-md grid place-items-center text-Primary  text-xs">
             {item.icon}
           </span>
         </div>

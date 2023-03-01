@@ -39,7 +39,7 @@ const Customers = () => {
     <PageContent>
       <div className="w-full h-full flex flex-col gap-3 sm:gap-4 overflow-hidden">
         <div className="w-full flex justify-between">
-          <h2 className="font-bold text-base md:text-2xl lg:text-3xl">
+          <h2 className="font-bold text-2xl lg:text-3xl">
             Customers
           </h2>
           <button className="text-white bg-Primary rounded-xl px-3">
@@ -83,7 +83,7 @@ const Customers = () => {
                   <td className="categoryTable rounded-tr-2xl">signed up</td>
                 </tr>
               </tbody>
-              <tbody className="w-full overflow-y-auto">{data}</tbody>
+              <tbody className="w-full overflow-x-auto">{data}</tbody>
             </table>
           </div>
         </BasicCard>

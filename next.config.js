@@ -4,13 +4,17 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'pravatar.cc',
-        port: '',
-        pathname: '150',
+        protocol: "https",
+        hostname: "i.pravatar.cc/**",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "material-kit-react.devias.io/**",
+        port: "",
       },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

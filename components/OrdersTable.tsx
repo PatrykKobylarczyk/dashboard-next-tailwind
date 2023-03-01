@@ -16,31 +16,26 @@ interface Orders {
 }
 
 const OrdersTable = ({ stores }: any) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
-
   const data = stores.map((item: Orders) => (
     <LastOrdersTableRow key={item.id} item={item} />
   ));
 
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full">
-        <tbody className="w-full p-5 ">
-          <tr className="w-full flex justify-between">
-            <td className="categoryTable rounded-tl-2xl">location</td>
-            <td className="categoryTable">director</td>
-            {isAboveMediumScreens && (
-              <td className="categoryTable">progress</td>
-            )}
-            {isAboveSmallScreens && <td className="categoryTable">deadline</td>}
-            {isAboveMediumScreens && <td className="categoryTable">visited</td>}
-            <td className="categoryTable rounded-tr-2xl">status</td>
-          </tr>
-          {data}
-        </tbody>
-      </table>
-    </div>
+    <table className="w-full">
+      <tbody className="w-full p-5">
+        <tr className="w-full flex justify-between">
+          <td className="categoryTable rounded-tl-2xl">
+            location
+          </td>
+          <td className="categoryTable">director</td>
+          <td className="categoryTable">progress</td>
+          <td className="categoryTable">deadline</td>
+          <td className="categoryTable">visited</td>
+          <td className="categoryTable rounded-tr-2xl">status</td>
+        </tr>
+        {data}
+      </tbody>
+    </table>
   );
 };
 

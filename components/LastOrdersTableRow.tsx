@@ -5,8 +5,6 @@ import useMediaQuery from "../hooks/useMediaQuery";
 import ProgressBar from "./ProgressBar";
 
 const LastOrdersTableRow = ({ item }: any) => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
-  const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
   const isAboveSuperSmallScreens = useMediaQuery("(min-width: 480px)");
 
   return (
@@ -15,7 +13,7 @@ const LastOrdersTableRow = ({ item }: any) => {
         <div className="w-[48px] xs:w-[80px] lg:text-xs">{item.location}</div>
       </td>
       <td className="tableRow">
-        <div className="flex items-center gap-1 xs:gap-2 w-[100px] xs:w-[112px] lg:text-xs">
+        <div className="flex items-center gap-1 xs:gap-2 w-[120px] xs:w-[112px] lg:text-xs">
           <img
             className="rounded-full"
             src={item.image}
@@ -26,14 +24,12 @@ const LastOrdersTableRow = ({ item }: any) => {
           {item.director}
         </div>
       </td>
-      {isAboveMediumScreens && (
-        <td className="tableRow lg:text-xs">
-          <ProgressBar progress={item.progress} />
-          {item.progress}%
-        </td>
-      )}
-      {isAboveSmallScreens && <td className="tableRow lg:text-xs">{item.deadline}</td>}
-      {isAboveMediumScreens && <td className="tableRow lg:text-xs">{item.visited}</td>}
+      <td className="tableRow lg:text-xs">
+        <ProgressBar progress={item.progress} />
+        {item.progress}%
+      </td>
+      <td className="tableRow lg:text-xs">{item.deadline}</td>
+      <td className="tableRow lg:text-xs">{item.visited}</td>
       <td className="tableRow">
         <div
           className={`${

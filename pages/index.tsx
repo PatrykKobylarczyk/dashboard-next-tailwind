@@ -112,36 +112,38 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PageContent>
-        <div className="w-full h-full flex flex-col gap-4 ">
-          <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">
+        <div className="page w-full h-full flex flex-col gap-4 overflow-x-hidden">
+          <h2 className="font-bold text-2xl lg:text-3xl my-6">
             Dashboard
           </h2>
-          <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-4 mt-2">
-            {statistics}
-          </div>
-          <div className="w-full flex flex-col md:flex-row gap-4 ">
-            <div className="w-full md:w-3/5 md:max-w-3/5">
-              <BasicCard>
-                <div className="h-80 w-full">
-                  <ChartBar />
-                </div>
+          <div className="page flex flex-col gap-4">
+            <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-4">
+              {statistics}
+            </div>
+            <div className="w-full flex flex-col md:flex-row gap-4 ">
+              <div className="w-full md:w-3/5 md:max-w-3/5">
+                <BasicCard>
+                  <div className="h-80 w-full">
+                    <ChartBar />
+                  </div>
+                </BasicCard>
+              </div>
+              <div className="w-full md:w-2/5 md:max-w-2/5">
+                <BasicCard>
+                  <div className="h-80 w-full">
+                    <DoughnutChart />
+                  </div>
+                </BasicCard>
+              </div>
+            </div>
+            <div className="w-full h-full flex flex-col gap-4 mt-5">
+              <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-5">
+                Last Orders
+              </h2>
+              <BasicCard resetPadding styles="overflow-x-auto">
+                <OrdersTable stores={stores} />
               </BasicCard>
             </div>
-            <div className="w-full md:w-2/5 md:max-w-2/5">
-              <BasicCard>
-                <div className="h-80 w-full">
-                  <DoughnutChart />
-                </div>
-              </BasicCard>
-            </div>
-          </div>
-          <div className="w-full h-full flex flex-col gap-4 mt-5">
-            <h2 className="font-bold text-base md:text-2xl lg:text-3xl my-3">
-              Last Orders
-            </h2>
-            <BasicCard resetPadding>
-              <OrdersTable stores={stores} />
-            </BasicCard>
           </div>
         </div>
       </PageContent>

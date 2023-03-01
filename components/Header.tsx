@@ -4,9 +4,15 @@ import Hamburger from "hamburger-react";
 
 //HOOKS
 import useMediaQuery from "../hooks/useMediaQuery";
+import Image from "next/image";
+
+//DATA
+import { customersData } from "@/data/customersData";
+import AccountPopup from "./AccountPopup";
 
 const Header = ({ isOpen, setIsOpen }: any) => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
+  const [isPopup, setIsPopup] = useState<boolean>(false);
 
   useEffect(() => {
     setIsOpen(false);
@@ -23,7 +29,21 @@ const Header = ({ isOpen, setIsOpen }: any) => {
         />
       )}
       <Logo />
-      <p className="text-xs font-bold">account items</p>
+      <div className="relative">
+        <button
+          className="hover:bg-Primary p-[2px] rounded-full"
+          onClick={() => setIsPopup((prev: any) => !prev)}
+        >
+          <Image
+            className="rounded-full cursor-pointer"
+            src={customersData[0].image}
+            alt="Profile"
+            width={40}
+            height={40}
+          />
+        </button>
+        {isPopup && <AccountPopup setIsPopup={setIsPopup} />}
+      </div>
     </header>
   );
 };
