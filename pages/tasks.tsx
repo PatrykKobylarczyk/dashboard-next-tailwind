@@ -10,7 +10,7 @@ const Tasks = () => {
       <div className="w-full h-full grid grid-col-1 xs:grid-col-2 md:grid-cols-3 gap-16">
         <div>
           <div className="w-full flex justify-between mb-5">
-            <h2>To Do's</h2>
+            <h2>To Do&aposs</h2>
             <button className="h-10 px-6 bg-Primary text-white text-xl">
               +
             </button>
