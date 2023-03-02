@@ -31,7 +31,7 @@ const OrdersTable = ({ stores }: any) => {
           <td className="categoryTable">progress</td>
           <td className="categoryTable">deadline</td>
           <td className="categoryTable">visited</td>
-          <td className="categoryTable rounded-tr-2xl">status</td>
+          <td className="categoryTable rounded-tr-2xl"><div className="w-[100px] flex justify-center">status</div></td>
         </tr>
         {data}
       </tbody>

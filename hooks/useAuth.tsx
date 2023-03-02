@@ -59,8 +59,6 @@ import {
       [auth]
     );
   
-    console.log(user)
-  
     const signUp = async (email: string, password: string) => {
       setLoading(true);
   

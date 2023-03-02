@@ -31,16 +31,18 @@ const LastOrdersTableRow = ({ item }: any) => {
       <td className="tableRow lg:text-xs">{item.deadline}</td>
       <td className="tableRow lg:text-xs">{item.visited}</td>
       <td className="tableRow">
-        <div
-          className={`${
-            item.status === "pending"
-              ? "bg-Warning/20 text-Warning"
-              : item.status === "completed"
-              ? "bg-Success/20 text-Success"
-              : "bg-Error/30 text-Error"
-          } py-1 px-2 xs:px-3 rounded-md text-[8px] xs:text-[9px] lg:text-xs`}
-        >
-          {item.status}
+        <div className="w-[100px] flex justify-center">
+          <div
+            className={`${
+              item.status === "pending"
+                ? "bg-Warning/20 text-Warning"
+                : item.status === "completed"
+                ? "bg-Success/20 text-Success"
+                : "bg-Error/30 text-Error"
+            } py-1 px-2 xs:px-3 rounded-md text-[8px] xs:text-[9px] lg:text-xs`}
+          >
+            {item.status}
+          </div>
         </div>
       </td>
     </tr>

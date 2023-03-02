@@ -5,8 +5,6 @@ import React from "react";
 const AccountPopup = ({ setIsPopup }: any) => {
   const { logout, user } = useAuth();
 
-  console.log(user);
-
   const handleLogout = () => {
     logout();
     setIsPopup(false);
