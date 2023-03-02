@@ -6,11 +6,11 @@ import React from "react";
 const Tasks = () => {
   return (
     <PageContent>
-      <h1 className="w-full font-bold text-2xl lg:text-3xl mb-10">Tasks</h1>
+      <h2 className="w-full font-bold text-2xl lg:text-3xl mb-10 mt-6">Tasks</h2>
       <div className="w-full h-full grid grid-col-1 xs:grid-col-2 md:grid-cols-3 gap-16">
         <div>
           <div className="w-full flex justify-between mb-5">
-            <h2>To Do&aposs</h2>
+            <h2>To Do</h2>
             <button className="h-10 px-6 bg-Primary text-white text-xl">
               +
             </button>

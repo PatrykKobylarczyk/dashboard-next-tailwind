@@ -39,7 +39,7 @@ const Customers = () => {
     <PageContent>
       <div className="w-full h-full flex flex-col gap-3 sm:gap-4 overflow-hidden">
         <div className="w-full flex justify-between">
-          <h2 className="font-bold text-2xl lg:text-3xl">
+          <h2 className="font-bold text-2xl lg:text-3xl my-6">
             Customers
           </h2>
           <button className="text-white bg-Primary rounded-xl px-3">
