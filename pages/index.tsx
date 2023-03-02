@@ -11,6 +11,7 @@ import OrdersTable from "@/components/OrdersTable";
 import BasicCard from "@/components/BasicCard";
 import ChartBar from "@/components/ChartBar";
 import DoughnutChart from "@/components/DoughnutChart";
+import useAuth from "@/hooks/useAuth";
 const dashboardStatistic = [
   {
     id: 1,
@@ -99,9 +100,12 @@ interface StatisticCard {
 }
 
 const Home = () => {
+  const { user } = useAuth();
   const statistics = dashboardStatistic.map((item: StatisticCard) => {
     return <DashboardStatisticCard key={item.id} item={item} />;
   });
+
+  if (!user) return null;
 
   return (
     <>
@@ -113,9 +117,7 @@ const Home = () => {
       </Head>
       <PageContent>
         <div className="page w-full h-full flex flex-col gap-4 overflow-x-hidden">
-          <h2 className="font-bold text-2xl lg:text-3xl my-6">
-            Dashboard
-          </h2>
+          <h2 className="font-bold text-2xl lg:text-3xl my-6">Dashboard</h2>
           <div className="page flex flex-col gap-4">
             <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4  gap-4">
               {statistics}
