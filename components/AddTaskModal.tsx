@@ -39,14 +39,6 @@ const AddTaskModal = ({ setIsModal, title }: any) => {
     }, 3500);
   };
 
-  //   useEffect(() => {
-  //     setTimeout(() => {
-  //       setIsSubmited(false);
-  //     }, 1500);
-  //   }, [isSubmited]);
-
-  console.log(taskDetails);
-
   return (
     <div className="fixed w-[85%] h-auto sm:w-1/2 sm:h-1/2 z-[100] mx-20">
       <BasicCard>
@@ -55,7 +47,7 @@ const AddTaskModal = ({ setIsModal, title }: any) => {
           className="relative rounded pt-12 pb-5 px-5"
         >
           <div className="space-y-4 ">
-            <h2 className="font-semibold">Add task "{title}"</h2>
+            <h2 className="font-semibold">Add task &quot;{title}&quot;</h2>
             <label className="flex flex-col gap-5">
               <input
                 type="text"

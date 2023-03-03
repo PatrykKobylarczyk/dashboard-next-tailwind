@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BasicCard from "./BasicCard";
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
@@ -74,10 +74,14 @@ const UserDetailsForm = () => {
     getProfileDetailsFromDB();
   }, []);
 
-  useEffect(() => {
+  const submitSaving = useCallback(()=>{
     setTimeout(() => {
       setIsSaved(false);
     }, 3000);
+  },[])
+
+  useEffect(() => {
+    submitSaving()
   }, [isSaved]);
 
   return (

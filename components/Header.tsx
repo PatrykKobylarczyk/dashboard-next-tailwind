@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Logo from "./Logo";
 import Hamburger from "hamburger-react";
 
@@ -14,8 +14,12 @@ const Header = ({ isOpen, setIsOpen }: any) => {
   const isAboveSmallScreens = useMediaQuery("(min-width: 768px)");
   const [isPopup, setIsPopup] = useState<boolean>(false);
 
-  useEffect(() => {
+  const closePopup = useCallback(() => {
     setIsOpen(false);
+  }, []);
+
+  useEffect(() => {
+    closePopup();
   }, [isAboveSmallScreens]);
 
   return (
