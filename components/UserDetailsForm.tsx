@@ -56,7 +56,6 @@ const UserDetailsForm = () => {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    console.log(event.target.value);
   };
   // submit form set data in Firebase
   const onSubmit = () => {
