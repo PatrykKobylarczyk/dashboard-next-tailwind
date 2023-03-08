@@ -19,25 +19,27 @@ const AddTaskModal = ({ setIsModal, title }: any) => {
       ...prev,
       [event.target.name]: event.target.value,
     }));
-    console.log(event.target.value);
   };
 
   const collectionName = title.toLowerCase().split(" ").join("");
 
   const onSubmit = async () => {
     setIsSubmited("Done!");
-    const citiesRef = collection(db, collectionName);
-    await setDoc(doc(citiesRef), {
+    const taskRef = collection(db, collectionName);
+    await setDoc(doc(taskRef), {
       title: taskDetails.title,
       description: taskDetails.description,
+      category: collectionName
     });
     setTimeout(() => {
       setIsSubmited("Congratulation!");
-    }, 1500);
+    }, 500);
     setTimeout(() => {
       setIsModal(null);
-    }, 3500);
+    }, 800);
   };
+
+
 
   return (
     <div className="fixed w-[85%] h-auto sm:w-1/2 sm:h-1/2 z-[100] mx-20">

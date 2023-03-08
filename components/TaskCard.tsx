@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsClockFill } from "react-icons/bs";
 import { FaRegCheckCircle } from "react-icons/fa";
@@ -8,9 +8,37 @@ import BasicCard from "./BasicCard";
 interface Details {
   title: string;
   description: string;
+  category: string;
+  deleteTask: any;
+  moveTask: any;
+  id: string;
 }
 
-const TaskCard = ({ title, description }: Details) => {
+const TaskCard = ({
+  title,
+  description,
+  category,
+  deleteTask,
+  moveTask,
+  id,
+}: Details) => {
+  const [textInTooltip, setTextInTooltip] = useState("");
+
+  useEffect(() => {
+    switch (category) {
+      case "todo":
+        setTextInTooltip('Move to "In progress"');
+        break;
+      case "inprogress":
+        setTextInTooltip('Move to "Completed"');
+        break;
+      case "completed":
+        setTextInTooltip('restore to "In progress"');
+        break;
+    }
+  }, [category]);
+
+
   return (
     <div className="w-full">
       <BasicCard>
@@ -26,9 +54,24 @@ const TaskCard = ({ title, description }: Details) => {
           </div>
 
           <div className="flex gap-5 items-center">
-            <RiDeleteBin6Line size={"20px"} />
-            <FaRegCheckCircle size={"20px"} />
-            <BiEdit size={"20px"} />
+            <div
+              className="tooltip cursor-pointer"
+              onClick={() => deleteTask(category, id)}
+            >
+              <RiDeleteBin6Line size={"20px"} />
+              <span className="tooltiptext mb-2">Delete</span>
+            </div>
+            <div
+              className="tooltip cursor-pointer"
+              onClick={() => moveTask(category, id)}
+            >
+              <FaRegCheckCircle size={"20px"} />
+              <span className="tooltiptext mb-2">{textInTooltip}</span>
+            </div>
+            <div className="tooltip cursor-pointer">
+              <BiEdit size={"20px"} />
+              <span className="tooltiptext mb-2">Edit</span>
+            </div>
           </div>
         </div>
       </BasicCard>

@@ -30,7 +30,7 @@ export const customersData = [
     id: 14,
     name: "Maria Visser",
     email: "maria.visser@devias.io	",
-    location: "Barceolna, , Spain",
+    location: "Barceolna, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=4"
@@ -57,7 +57,7 @@ export const customersData = [
     id: 17,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=7"
@@ -84,7 +84,7 @@ export const customersData = [
     id: 20,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=10"
@@ -93,7 +93,7 @@ export const customersData = [
     id: 1711,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=7"
@@ -120,7 +120,7 @@ export const customersData = [
     id: 2011,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=10"
@@ -129,7 +129,7 @@ export const customersData = [
     id: 171,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=7"
@@ -156,7 +156,7 @@ export const customersData = [
     id: 201,
     name: "Anika Visser",
     email: "anika.visser@devias.io	",
-    location: "Madrid, , Spain",
+    location: "Madrid, Spain",
     phone: "908-691-3242",
     signedUp: '26/2/2023',
     image: "https://i.pravatar.cc/150?img=10"

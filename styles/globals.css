@@ -80,3 +80,31 @@ input[type="search"]::-webkit-search-cancel-button {
 select{
   @apply text-gray-400 
 }
+
+
+/* tooltips */
+.tooltip {
+  position: relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #7465ff;
+  color: #fff;
+  font-size: 11px;
+  text-align: center;
+  border-radius: 8px 8px 0 8px;
+  padding: 10px 0;
+  
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -140px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

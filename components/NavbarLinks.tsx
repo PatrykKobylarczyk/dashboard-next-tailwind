@@ -27,12 +27,12 @@ const links = [
     icon: <RxCalendar />,
     path: "/companies",
   },
-  {
-    id: 4,
-    name: "Messages",
-    icon: <RiMessage2Line />,
-    path: "/messages",
-  },
+  // {
+  //   id: 4,
+  //   name: "Messages",
+  //   icon: <RiMessage2Line />,
+  //   path: "/messages",
+  // },
   {
     id: 5,
     name: "Tasks",
