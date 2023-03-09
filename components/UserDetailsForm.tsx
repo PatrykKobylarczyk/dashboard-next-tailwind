@@ -30,6 +30,7 @@ interface Profile {
   firstName: string;
   lastName: string;
   phoneNumber: string;
+  state: string;
 }
 
 const profile = {
@@ -38,6 +39,7 @@ const profile = {
   firstName: "",
   lastName: "",
   phoneNumber: "",
+  state: "",
 };
 
 const UserDetailsForm = () => {
@@ -60,6 +62,7 @@ const UserDetailsForm = () => {
   // submit form set data in Firebase
   const onSubmit = () => {
     setDoc(doc(db, "users", `${user!.email}`), userDetails);
+    console.log(userDetails);
     setIsSaved(true);
   };
 
@@ -74,14 +77,14 @@ const UserDetailsForm = () => {
     getProfileDetailsFromDB();
   }, []);
 
-  const submitSaving = useCallback(()=>{
+  const submitSaving = useCallback(() => {
     setTimeout(() => {
       setIsSaved(false);
     }, 3000);
-  },[])
+  }, []);
 
   useEffect(() => {
-    submitSaving()
+    submitSaving();
   }, [isSaved]);
 
   return (
@@ -117,8 +120,6 @@ const UserDetailsForm = () => {
             </label>
             <label className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
               <div
-                // type="text"
-                // name="email"
                 placeholder="E-mail"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
               >
@@ -144,11 +145,12 @@ const UserDetailsForm = () => {
               />
 
               <select
+                name="state"
                 placeholder="State"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
                 onChange={handleStateChange}
               >
-                <option value="">State</option>
+                <option >{userProfile.state ? userProfile.state : 'State'}</option>
                 {options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -159,7 +161,7 @@ const UserDetailsForm = () => {
           </div>
           <div className="w-full flex justify-end mt-10">
             <button className="w-full md:w-1/3 bg-Primary text-white py-3 font-semibold flex justify-center">
-              {isSaved ? 'Saved' :'Save details'}
+              {isSaved ? "Saved" : "Save details"}
             </button>
           </div>
         </form>
