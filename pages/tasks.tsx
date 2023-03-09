@@ -8,18 +8,20 @@ import {
   doc,
   setDoc,
   getDoc,
+  updateDoc,
 } from "firebase/firestore";
 import TaskCard from "@/components/TaskCard";
 import AddTaskModal from "@/components/AddTaskModal";
+import EditTaskModal from "@/components/EditTaskModal";
 
-export const TasksList = ({ children, title, handleAddNewTask }: any) => {
+export const TasksList = ({ children, listName, setIsModal }: any) => {
   return (
     <div>
       <div className="w-full flex justify-between mb-5">
-        <h2>{title}</h2>
+        <h2>{listName}</h2>
         <button
           className="h-10 px-6 bg-Primary text-white text-xl"
-          onClick={() => handleAddNewTask(title)}
+          onClick={() => setIsModal(listName)}
         >
           +
         </button>
@@ -30,12 +32,13 @@ export const TasksList = ({ children, title, handleAddNewTask }: any) => {
 };
 
 const Tasks = () => {
-  const [isModal, setIsModal] = useState<any>(null);
   const [tasksTodo, setTasksTodo] = useState<any[]>([]);
   const [tasksInprogress, setTasksInprogress] = useState<any[]>([]);
   const [tasksCompleted, setTasksCompleted] = useState<any[]>([]);
+  const [isModal, setIsModal] = useState<any>(null);
+  const [isEdit, setIsEdit] = useState<any>(null);
 
-  // get tasks from firebase
+  // GET TASKS
   const getTasks = async (categoryName: string, categoryState: any) => {
     const tasks: any[] = [];
     const docsRef = collection(db, categoryName);
@@ -46,7 +49,7 @@ const Tasks = () => {
     });
   };
 
-  // delete task from list
+  // DELETE TASK
   const deleteTask = async (categoryName: string, id: string) => {
     let currentCategoryList: any[] = [];
     switch (categoryName) {
@@ -71,7 +74,7 @@ const Tasks = () => {
     currentCategoryList[1](updatedTasks);
   };
 
-  // move task to another list
+  // MOVE TASK
   const moveTask = async (categoryName: string, id: string) => {
     // new category for task
     let newCategory: any;
@@ -93,7 +96,6 @@ const Tasks = () => {
         console.log("error");
     }
 
-    console.log(newCategory);
     // get task
     const taskRef = doc(db, categoryName, id);
     const task = await getDoc(taskRef);
@@ -104,7 +106,6 @@ const Tasks = () => {
         id: id,
         category: newCategory,
       });
-      console.log(task.data());
     } else {
       console.log("No such document!");
     }
@@ -123,17 +124,48 @@ const Tasks = () => {
     newCategoryList[1](updatedTasks);
   };
 
+  // UPDATE TASK
+  const updateTask = async (categoryName: string, taskDetails: any) => {
+
+    let currentCategoryList: any[] = [];
+
+    switch (categoryName) {
+      case "todo":
+        currentCategoryList = [tasksTodo, setTasksTodo];
+        break;
+      case "inprogress":
+        currentCategoryList = [tasksInprogress, setTasksInprogress];
+        break;
+      case "completed":
+        currentCategoryList = [tasksCompleted, setTasksCompleted];
+        break;
+      default:
+        console.log("error");
+    }
+
+    // update task in Firebase
+    const taskRef = doc(db, categoryName, isEdit.id);
+    const editedTask = {
+      title: taskDetails.title,
+      description: taskDetails.description,
+      category: categoryName,
+      id: isEdit.id,
+    };
+    await updateDoc(taskRef, editedTask);
+
+    const updatedTask = currentCategoryList[0].filter(
+      (task: any) => task.id !== isEdit.id
+    );
+    currentCategoryList[1]([editedTask], ...updatedTask);
+  };
+
+
+  // GET ALL TASKS LIST FROM FIREBASE
   useEffect(() => {
     getTasks("todo", setTasksTodo);
     getTasks("inprogress", setTasksInprogress);
     getTasks("completed", setTasksCompleted);
   }, [isModal]);
-
-  const handleAddNewTask = (title: string) => {
-    setIsModal(title);
-  };
-
-  console.log(tasksInprogress);
 
   return (
     <PageContent>
@@ -142,7 +174,7 @@ const Tasks = () => {
           Tasks
         </h2>
         <div className="w-full h-full grid grid-col-1 lg:grid-cols-3 lg gap-16">
-          <TasksList title="To Do" id="1" handleAddNewTask={handleAddNewTask}>
+          <TasksList listName="To Do" id="1" setIsModal={setIsModal}>
             {tasksTodo.map((item) => (
               <TaskCard
                 key={item.title + item.id}
@@ -152,14 +184,11 @@ const Tasks = () => {
                 category={item.category}
                 deleteTask={deleteTask}
                 moveTask={moveTask}
+                setIsEdit={setIsEdit}
               />
             ))}
           </TasksList>
-          <TasksList
-            title="In Progress"
-            id="2"
-            handleAddNewTask={handleAddNewTask}
-          >
+          <TasksList listName="In Progress" id="2" setIsModal={setIsModal}>
             {tasksInprogress.map((item) => (
               <TaskCard
                 key={item.title + item.id}
@@ -169,14 +198,11 @@ const Tasks = () => {
                 category={item.category}
                 deleteTask={deleteTask}
                 moveTask={moveTask}
+                setIsEdit={setIsEdit}
               />
             ))}
           </TasksList>
-          <TasksList
-            title="Completed"
-            id="3"
-            handleAddNewTask={handleAddNewTask}
-          >
+          <TasksList listName="Completed" id="3" setIsModal={setIsModal}>
             {tasksCompleted.map((item) => (
               <TaskCard
                 key={item.title + item.id}
@@ -186,6 +212,7 @@ const Tasks = () => {
                 category={item.category}
                 deleteTask={deleteTask}
                 moveTask={moveTask}
+                setIsEdit={setIsEdit}
               />
             ))}
           </TasksList>
@@ -193,9 +220,16 @@ const Tasks = () => {
       </div>
       {isModal && (
         <AddTaskModal
-          isModal={isModal}
           setIsModal={setIsModal}
-          title={isModal}
+          listName={isModal}
+          isEdit={isEdit}
+        />
+      )}
+      {isEdit && (
+        <EditTaskModal
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+          updateTask={updateTask}
         />
       )}
     </PageContent>

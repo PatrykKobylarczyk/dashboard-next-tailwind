@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiEdit } from "react-icons/bi";
 import { BsClockFill } from "react-icons/bs";
 import { FaRegCheckCircle } from "react-icons/fa";
@@ -11,6 +11,7 @@ interface Details {
   category: string;
   deleteTask: any;
   moveTask: any;
+  setIsEdit: any;
   id: string;
 }
 
@@ -21,6 +22,7 @@ const TaskCard = ({
   deleteTask,
   moveTask,
   id,
+  setIsEdit,
 }: Details) => {
   const [textInTooltip, setTextInTooltip] = useState("");
 
@@ -37,7 +39,6 @@ const TaskCard = ({
         break;
     }
   }, [category]);
-
 
   return (
     <div className="w-full">
@@ -68,7 +69,10 @@ const TaskCard = ({
               <FaRegCheckCircle size={"20px"} />
               <span className="tooltiptext mb-2">{textInTooltip}</span>
             </div>
-            <div className="tooltip cursor-pointer">
+            <div
+              className="tooltip cursor-pointer"
+              onClick={() => setIsEdit({category, id})}
+            >
               <BiEdit size={"20px"} />
               <span className="tooltiptext mb-2">Edit</span>
             </div>

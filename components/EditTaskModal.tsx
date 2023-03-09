@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import BasicCard from "./BasicCard";
 import { useForm } from "react-hook-form";
 import { TfiClose } from "react-icons/tfi";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 
-const AddTaskModal = ({ setIsModal, listName }: any) => {
+const EditTaskModal = ({ isEdit, setIsEdit, updateTask }: any) => {
   const { handleSubmit } = useForm();
   const [isSubmited, setIsSubmited] = useState<any>(null);
   const [taskDetails, setTaskDetails] = useState({
@@ -21,24 +21,40 @@ const AddTaskModal = ({ setIsModal, listName }: any) => {
     }));
   };
 
-  const collectionName = listName.toLowerCase().split(" ").join("");
+  // get task to display in inputs
+  const getTask = async () => {
+    const taskRef = doc(db, isEdit.category, isEdit.id);
+    const task = await getDoc(taskRef);
 
-  const onSubmit = async () => {
+    if (task.exists()) {
+      setTaskDetails({
+        title: task.data().title,
+        description: task.data().description,
+      });
+    } else {
+      console.log("No such document!");
+    }
+  };
+
+  useEffect(() => {
+    getTask();
+  }, [isEdit]);
+
+  //   update task
+  const onSubmit = () => {
+    updateTask(isEdit.category, taskDetails);
+
     setIsSubmited("Done!");
-    const taskRef = collection(db, collectionName);
-    await setDoc(doc(taskRef), {
-      title: taskDetails.title,
-      description: taskDetails.description,
-      category: collectionName,
-    });
+
     setTimeout(() => {
       setIsSubmited("Congratulation!");
     }, 500);
     setTimeout(() => {
-      setIsModal(null);
+      setIsEdit(false);
     }, 800);
   };
 
+  
   return (
     <div className="fixed w-[85%] h-auto sm:w-1/2 sm:h-1/2 z-[100] mx-20">
       <BasicCard>
@@ -47,7 +63,7 @@ const AddTaskModal = ({ setIsModal, listName }: any) => {
           className="relative rounded pt-12 pb-5 px-5"
         >
           <div className="space-y-4 ">
-            <h2 className="font-semibold">Add task &quot;{listName}&quot;</h2>
+            <h2 className="font-semibold">Save changes</h2>
             <label className="flex flex-col gap-5">
               <input
                 type="text"
@@ -55,6 +71,7 @@ const AddTaskModal = ({ setIsModal, listName }: any) => {
                 placeholder="Title"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
                 onChange={handleStateChange}
+                defaultValue={taskDetails.title}
               />
 
               <textarea
@@ -63,17 +80,18 @@ const AddTaskModal = ({ setIsModal, listName }: any) => {
                 placeholder="Description"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
                 onChange={handleStateChange}
+                defaultValue={taskDetails.description}
               />
             </label>
             <div className="w-full flex justify-end">
               <button className="w-full md:w-1/3 bg-Primary text-white py-3 font-semibold flex justify-center">
-                {isSubmited ? isSubmited : "Add task"}
+                {isSubmited ? isSubmited : "Edit task"}
               </button>
             </div>
           </div>
           <button
             className="absolute top-4 right-5 text-Primary hover:bg-Primary text-xl cursor-pointer"
-            onClick={() => setIsModal(null)}
+            onClick={() => setIsEdit(null)}
           >
             <TfiClose />
           </button>
@@ -83,4 +101,4 @@ const AddTaskModal = ({ setIsModal, listName }: any) => {
   );
 };
 
-export default AddTaskModal;
+export default EditTaskModal;
