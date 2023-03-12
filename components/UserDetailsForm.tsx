@@ -1,9 +1,20 @@
 import React, { useCallback, useEffect, useState } from "react";
 import BasicCard from "./BasicCard";
 import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
 import useAuth from "../hooks/useAuth";
 import { db } from "../firebase";
 import { getDoc, setDoc, doc } from "firebase/firestore";
+
+import * as yup from "yup";
+
+
+const schema = yup.object().shape({
+  firstName: yup.string().email("EEEEEE").required("First name is required"),
+  lastName: yup.string().required("Last name is required"),
+  state: yup.string().required("State is required"),
+  email: yup.string().email("TO NIE JEST EMAIL LOL").required("Email is required"),
+})
 
 const options = [
   {
@@ -43,7 +54,9 @@ const profile = {
 };
 
 const UserDetailsForm = () => {
-  const { handleSubmit, reset, register } = useForm();
+  const { handleSubmit, reset, register, formState: {errors} } = useForm({
+    resolver: yupResolver(schema),
+  });
   const { user } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -97,6 +110,9 @@ const UserDetailsForm = () => {
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
                 {...register("firstName", { required: true })}
               />
+              <p>
+                {errors.firstName?.message && <span className="text-red-500">{errors.firstName?.message as string}</span>}
+              </p>
 
               <input
                 type="text"
