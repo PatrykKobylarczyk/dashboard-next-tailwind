@@ -24,14 +24,14 @@ const options = [
   },
 ];
 
-interface Profile {
-  country: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  state: string;
-}
+// interface Profile {
+//   country: string;
+//   email: string;
+//   firstName: string;
+//   lastName: string;
+//   phoneNumber: string;
+//   state: string;
+// }
 
 const profile = {
   country: "",
@@ -43,26 +43,15 @@ const profile = {
 };
 
 const UserDetailsForm = () => {
-  const { handleSubmit } = useForm();
+  const { handleSubmit, reset, register } = useForm();
   const { user } = useAuth();
-  const [userProfile, setUserProfile] = useState<any>(profile);
-  const [userDetails, setUserDetails] = useState<any>({
-    email: user?.email,
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
   const [isSaved, setIsSaved] = useState(false);
 
-  const handleStateChange = (event: any) => {
-    event.preventDefault();
-    setUserDetails((prev: any) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
   // submit form set data in Firebase
-  const onSubmit = () => {
-    setDoc(doc(db, "users", `${user!.email}`), userDetails);
-    console.log(userDetails);
+  const onSubmit = (data: any) => {
+    setDoc(doc(db, "users", `${user!.email}`), data);
     setIsSaved(true);
   };
 
@@ -70,7 +59,9 @@ const UserDetailsForm = () => {
   const getProfileDetailsFromDB = async () => {
     const ref = doc(db, "users", `${user!.email}`);
     const docSnap = await getDoc(ref);
-    setUserProfile(docSnap.data());
+    const d = docSnap.data()
+    setIsLoading(false)
+    reset(d);
   };
 
   useEffect(() => {
@@ -89,36 +80,32 @@ const UserDetailsForm = () => {
 
   return (
     <div className="md:col-span-2">
-      <BasicCard>
+          <BasicCard>
         <div className="mt-10 ml-5">
           <h2 className="font-semibold">Profile</h2>
           <p className="text-xs">The information can be edited</p>
         </div>
         <form
-          onSubmit={handleSubmit(onSubmit as any)}
+          onSubmit={handleSubmit(onSubmit)}
           className="relative rounded pt-12 pb-5 px-5"
         >
           <div className="space-y-4 ">
             <label className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
-                name="firstName"
                 placeholder="First name"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
-                onChange={handleStateChange}
-                defaultValue={userProfile?.firstName}
+                {...register("firstName", { required: true })}
               />
 
               <input
                 type="text"
-                name="lastName"
                 placeholder="Last name"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
-                onChange={handleStateChange}
-                defaultValue={userProfile?.lastName}
+                 {...register("lastName", { required: true })}
               />
             </label>
-            <label className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* <label className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
               <div
                 placeholder="E-mail"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
@@ -133,24 +120,22 @@ const UserDetailsForm = () => {
                 onChange={handleStateChange}
                 defaultValue={userProfile?.phoneNumber}
               />
-            </label>
+            </label> */}
             <label className="w-full grid grid-cols-1 md:grid-cols-2 gap-5">
-              <input
+              {/* <input
                 type="text"
-                name="country"
                 placeholder="Country"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
-                onChange={handleStateChange}
-                defaultValue={userProfile?.country}
-              />
+                
+              /> */}
+
 
               <select
-                name="state"
                 placeholder="State"
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
-                onChange={handleStateChange}
+                {...register("State", { required: true })}
               >
-                <option >{userProfile.state ? userProfile.state : 'State'}</option>
+                <option value="-" >Select State</option>
                 {options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
@@ -160,12 +145,13 @@ const UserDetailsForm = () => {
             </label>
           </div>
           <div className="w-full flex justify-end mt-10">
-            <button className="w-full md:w-1/3 bg-Primary text-white py-3 font-semibold flex justify-center">
+            <button type="submit" className="w-full md:w-1/3 bg-Primary text-white py-3 font-semibold flex justify-center">
               {isSaved ? "Saved" : "Save details"}
             </button>
           </div>
         </form>
       </BasicCard>
+
     </div>
   );
 };
