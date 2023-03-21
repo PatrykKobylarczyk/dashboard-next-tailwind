@@ -62,7 +62,6 @@ const UserDetailsForm = () => {
   // submit form set data in Firebase
   const onSubmit = () => {
     setDoc(doc(db, "users", `${user!.email}`), userDetails);
-    console.log(userDetails);
     setIsSaved(true);
   };
 
@@ -150,7 +149,7 @@ const UserDetailsForm = () => {
                 className="input w-full border-2 border-gray-100 focus:border-Primary outline-none px-4 py-2 rounded-lg"
                 onChange={handleStateChange}
               >
-                <option >{userProfile.state ? userProfile.state : 'State'}</option>
+                <option >{userProfile?.state ? userProfile.state : 'State'}</option>
                 {options.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.label}
