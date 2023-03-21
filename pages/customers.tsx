@@ -64,10 +64,10 @@ const Customers = () => {
 
   return (
     <PageContent>
-      <div className="page w-full h-full flex flex-col gap-3 sm:gap-4 overflow-x-hidden">
-        <div className="w-full flex justify-between items-center">
+      <div className="w-full h-full flex flex-col gap-3 sm:gap-4 overflow-x-hidden">
+        <div className="w-full flex justify-between items-center ">
           <h2 className="font-bold text-2xl lg:text-3xl my-6">Customers</h2>
-          <button className="text-white bg-Primary rounded-xl px-3 md:px-5 h-10 md:h-14">
+          <button className="text-white bg-Primary rounded-xl md:px-5 h-10 md:h-12 px-5">
             <HiOutlinePlus />
             Add
           </button>
@@ -111,7 +111,13 @@ const Customers = () => {
                   <td className="categoryTable rounded-tr-2xl">signed up</td>
                 </tr>
               </tbody>
-              <tbody className="w-full overflow-x-auto text-center">{filteredCustomers.length!==0 ? data :<p className="pt-5 pb-3">Not found</p>}</tbody>
+              <tbody className="w-full overflow-x-auto text-center">
+                {filteredCustomers.length !== 0 ? (
+                  data
+                ) : (
+                  <p className="pt-5 pb-3">Not found</p>
+                )}
+              </tbody>
             </table>
           </div>
         </BasicCard>

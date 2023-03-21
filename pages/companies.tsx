@@ -63,7 +63,7 @@ const Companies = () => {
       <div className="w-full h-auto flex flex-col gap-3 sm:gap-4">
         <div className="w-full flex justify-between items-center">
           <h2 className="font-bold text-2xl lg:text-3xl my-6">Companies</h2>
-          <button className="h-10 text-white bg-Primary rounded-xl px-3">
+          <button className="h-12 text-white bg-Primary rounded-xl px-5">
             <HiOutlinePlus />
             Add
           </button>
